@@ -666,9 +666,295 @@ footer {
 }
 
 .announcement-banner {
-  background-color: #4caf50;
+  background: linear-gradient(135deg, #1b5e20, #2e7d32);
   color: white;
   text-align: center;
-  padding: 15px;
-  font-weight: bold;
+  padding: 12px 20px;
+  font-weight: 500;
+  font-size: 0.92rem;
+  letter-spacing: 0.2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+.announcement-banner.hidden {
+  display: none !important;
+}
+
+.banner-icon {
+  font-size: 1.1rem;
+  flex-shrink: 0;
+}
+
+.banner-text {
+  flex: 1;
+  min-width: 0;
+  word-break: break-word;
+}
+
+.banner-counter {
+  font-size: 0.75rem;
+  opacity: 0.8;
+  white-space: nowrap;
+}
+
+.banner-nav {
+  background: rgba(255, 255, 255, 0.2);
+  border: none;
+  color: white;
+  font-size: 1.2rem;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  line-height: 1;
+  flex-shrink: 0;
+  transition: background-color 0.2s;
+}
+
+.banner-nav:hover {
+  background: rgba(255, 255, 255, 0.35);
+}
+
+/* ── Announcements Management Modal ───────────────────────────────────────── */
+
+.announcements-modal-content {
+  max-width: 700px;
+  width: 95%;
+  max-height: 88vh;
+  overflow-y: auto;
+  padding: 24px;
+}
+
+.announcements-modal-content h3 {
+  color: var(--primary);
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid var(--border);
+}
+
+.modal-close-btn {
+  position: absolute;
+  right: 14px;
+  top: 10px;
+  font-size: 20px;
+  cursor: pointer;
+  color: var(--text-secondary);
+  background: none;
+  border: none;
+  padding: 4px 8px;
+  line-height: 1;
+  border-radius: 4px;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+.modal-close-btn:hover {
+  background-color: var(--error-light);
+  color: var(--error);
+}
+
+/* Add / edit form */
+.announcement-form-wrapper {
+  background: var(--background);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 16px;
+  margin-bottom: 20px;
+}
+
+.announcement-form-wrapper h4 {
+  color: var(--primary);
+  font-size: 1rem;
+  margin-bottom: 14px;
+}
+
+.announcement-form-wrapper textarea {
+  width: 100%;
+  padding: 8px 10px;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  font-size: 0.88rem;
+  resize: vertical;
+  font-family: Arial, sans-serif;
+  transition: border-color 0.2s;
+}
+
+.announcement-form-wrapper textarea:focus {
+  outline: none;
+  border-color: var(--primary-light);
+  box-shadow: 0 0 0 2px rgba(83, 75, 174, 0.1);
+}
+
+.announcement-dates {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-top: 4px;
+}
+
+.announcement-dates .form-group {
+  flex: 1;
+  min-width: 140px;
+}
+
+.optional-label {
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  font-weight: normal;
+}
+
+.announcement-form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 12px;
+  flex-wrap: wrap;
+}
+
+.btn-secondary {
+  background-color: var(--background);
+  color: var(--text-primary);
+  border: 1px solid var(--border);
+}
+
+.btn-secondary:hover {
+  background-color: var(--border);
+}
+
+/* Announcements table */
+.announcements-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.85rem;
+}
+
+.announcements-table th,
+.announcements-table td {
+  padding: 10px 12px;
+  text-align: left;
+  border-bottom: 1px solid var(--border);
+  vertical-align: middle;
+}
+
+.announcements-table th {
+  background-color: var(--background);
+  color: var(--text-secondary);
+  font-weight: 600;
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+}
+
+.announcements-table tbody tr:hover {
+  background-color: var(--border-light);
+}
+
+.ann-message-cell {
+  max-width: 280px;
+  word-break: break-word;
+}
+
+.ann-badge {
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: 12px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+  white-space: nowrap;
+}
+
+.badge-active {
+  background-color: var(--success-light);
+  color: var(--success);
+}
+
+.badge-inactive {
+  background-color: var(--error-light);
+  color: var(--error);
+}
+
+.ann-actions-cell {
+  white-space: nowrap;
+  text-align: right;
+}
+
+.icon-action-btn {
+  background: none;
+  border: 1px solid var(--border);
+  color: var(--primary);
+  width: 30px;
+  height: 30px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.95rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  transition: background-color 0.2s, color 0.2s;
+  margin-left: 4px;
+}
+
+.icon-action-btn:hover {
+  background-color: var(--primary-light);
+  color: white;
+  border-color: var(--primary-light);
+}
+
+.danger-btn {
+  color: var(--error);
+  border-color: var(--error-light);
+}
+
+.danger-btn:hover {
+  background-color: var(--error);
+  color: white;
+  border-color: var(--error);
+}
+
+.no-announcements-msg {
+  text-align: center;
+  color: var(--text-secondary);
+  padding: 20px;
+  font-size: 0.88rem;
+}
+
+.error-text {
+  color: var(--error);
+  font-size: 0.85rem;
+  padding: 8px;
+}
+
+/* Manage announcements button in header */
+#manage-announcements-button {
+  background-color: rgba(255, 255, 255, 0.15);
+}
+
+#manage-announcements-button:hover {
+  background-color: rgba(255, 255, 255, 0.28);
+}
+
+@media (max-width: 480px) {
+  .announcement-dates {
+    flex-direction: column;
+  }
+
+  .announcements-modal-content {
+    padding: 16px;
+  }
+
+  .ann-message-cell {
+    max-width: 140px;
+  }
 }
